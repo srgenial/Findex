@@ -1,5 +1,6 @@
 ---
-title: "Indicators"
+title: "Trabajo final"
+authors: "Bon, Montiel, Castro, Gonzalez"
 output: html_notebook
 ---
 #Initial SETUP
