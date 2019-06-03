@@ -9,11 +9,11 @@ rm(list = ls())
 sessionInfo()
 
 # Set the working directory
-setwd("C:/Users/srgen/OneDrive/Documentos/Applied Economics/Econometrics/Econometrics II class/Corona EcoII-2/Homework/Paper equipo")
+#setwd()
 getwd()
 
 #Library setup
-libs <- c("WDI", "forecast", "ggplot2", "portes", "tseries", "vars", "FactoMineR")
+libs <- c("WDI", "forecast", "ggplot2", "portes", "tseries", "vars", "FactoMineR", "rticles", "tsDyn")
 class(libs)
 length(libs)
 for (i in libs) {
@@ -24,11 +24,11 @@ for (i in libs) {
 }
 
 # path 
-path <-"C:/Users/srgen/OneDrive/Documentos/Applied Economics/Econometrics/Econometrics II class/Corona EcoII-2/Homework/Paper equipo/"
+#path <-"C:/Users/srgen/OneDrive/Documentos/Applied Economics/Econometrics/Econometrics II class/Corona EcoII-2/Homework/Findex/Findex/"
 # some functions
-source(paste(path, "functions.r", sep = ""))
+source("functions.r")
 ```
-#Indicators:
+# Findex Indicators:
  #LLG
 LEV: FIRST
 NAME: "Liquid liabilities to GDP (%)"
@@ -45,22 +45,30 @@ CODE: "FS.AST.DOMS.GD.ZS"
 LEV: FOURTH
 NAME:  "Domestic credit to private sector (% of GDP)"
 CODE:  "FS.AST.PRVT.GD.ZS"
- #M2
-LEV: NO
-NAME: Masa Monetaria con respecto al PIB
-CODE: "FM.LBL.BMNY.GD.ZS
+
+# Regresadas
  #GDPMX
 LEVL:No
 COL: 
 NAME: "GDP per capita (constant 2010 US$)"
 CODE: ""NY.GDP.PCAP.KD""
- #GDPUS
-LEVL:No
-NAME: "GDP per capita (constant 2010 US$)"
-CODE: ""NY.GDP.PCAP.KD"
+
+# Control 
+ #M2
+LEV: NO
+NAME: Masa Monetaria con respecto al PIB
+CODE: "FM.LBL.BMNY.GD.ZS
+ 
 #GCF
 NAME:"Gross capital formation (% of GDP)" 
 CODE: "NE.GDI.TOTL.ZS" 
+
+
+
+#GDPUS
+LEVL:No
+NAME: "GDP per capita (constant 2010 US$)"
+CODE: ""NY.GDP.PCAP.KD"
 
 library("WDI") for World Bank Development Indicators for R  https://github.com/vincentarelbundock/WDI
 How to look for data:
@@ -94,14 +102,23 @@ names(GDPUS)<-c("code", "C","GDPUS","yr")
 GDPUS<-GDPUS[order(GDPUS$yr),]
 names(GCF)<-c("code", "C","GCF","yr")
 GCF<-GCF[order(GCF$yr),]
+
+LLG$LLG<-log(LLG$LLG)
+PCDM$PCDM<-log(PCDM$PCDM)
+DCFS$DCFS<-log(DCFS$DCFS)
+GDPMX$GDPMX<-log(GDPMX$GDPMX)
+GCF$GCF<-log(GCF$GCF)
+GDPUS$GDPUS<-log(GDPUS$GDPUS)
+DCPS$DCPS<-log(DCPS$DCPS)
+M2$M2<-log(M2$M2)
 ```
 # Construcción de Serie de Tiempo
 ```{r}
-ts<-cbind(LLG$LLG, PCDM$PCDM, DCFS$DCFS, DCPS$DCPS, M2$M2, GDPMX$GDPMX, GDPUS$GDPUS, GCF$GCF)
-ts<-ts((ts), names=c("LLG","PCDM", "DCFS", "DCPS","M2", "GDPMX", "GDPUS", "GCF"), start= min(GDPMX$yr), end=max(GDPMX$yr), frequency=1)
+ts<-cbind(LLG$LLG, PCDM$PCDM, DCFS$DCFS, DCPS$DCPS, M2$M2, GDPMX$GDPMX, GCF$GCF, GDPUS$GDPUS)
+ts<-ts((ts), names=c("LLG","PCDM", "DCFS", "DCPS","M2", "GDPMX","GCF", "GDPUS"), start= min(GDPMX$yr), end=max(GDPMX$yr), frequency=1)
 head(ts)
-ts.plot(scale((ts)),col=c(1,2,3,4,5,6,7,8), lwd=c(4,1,1,1,1,1,1,4))
-legend("top", colnames(ts), col = c(1:7), lty = 1)
+ts.plot(scale(ts),col=c(1,2,3,4,5,6,7,8), lwd=c(1,1,1,1,1,1,1))
+legend("bottomleft", colnames(ts), col = c(1:8), lty = 1)
 cor(ts)
 ```
 # RAiz Unitaria a todas las series.
@@ -117,12 +134,13 @@ for(i in 1 : ncol(ts)){
 }
 adf_mat
 ```
-# Serie de Tiempo para índice financiero
+# Serie de Tiempo para contrucción del índice financiero
+Datos escalados para su uso posterior
 ```{r}
-tsf<-cbind(LLG$LLG, PCDM$PCDM, DCFS$DCFS, DCPS$DCPS)
-tsf<-ts(scale(tsf),names=c("LLG","PCDM", "DCFS", "DCPS"), start= min(PCDM$yr), end=max(PCDM$yr), frequency=1)
+tsf<-cbind(LLG$LLG,PCDM$PCDM, M2$M2, DCPS$DCPS)
+tsf<-ts(tsf,names=c("LLG","PCDM", "M2", "PRUEBA"), start= min(PCDM$yr), end=max(PCDM$yr), frequency=1)
 head(tsf)
-ts.plot((tsf),  col=c(1,2,3,4), lwd=c(5,2,2,2))
+ts.plot((tsf),  col=c(1,2,3,4), lwd=c(2,2,2,2))
 legend("top", colnames(tsf), col = c(1:4), lty = 1)
 ```
 # RAiz Unitaria a series financieras.
@@ -142,25 +160,27 @@ adf_matf
 Indice de Componenetes comunes
 Obtenemos 6 componentes (eigenvalores), la segunda columa nos aporta la contribución del eigenvalor.
 ```{r}
-pc1<-PCA(tsf, scale.unit=FALSE, ncp=4, graph = FALSE)
+pc1<-PCA(tsf, scale.unit=TRUE, ncp=4, graph = FALSE)
 head(pc1$eig)
 head(pc1$var$contrib)
+
 ```
 # Findex
+Observemos el comportamiento del Indice.
 ```{r}
-findex<-(tsf[,1] * (pc1$var$contrib[1,1]/100)) + (tsf[,2]*(pc1$var$contrib[2,1]/100)) +(tsf[,3]*(pc1$var$contrib[3,1]/100))+(tsf[,4]*(pc1$var$contrib[4,1]/100))
+findex<-(tsf[,1]*(pc1$var$contrib[1,1]/100)) +(tsf[,2]*(pc1$var$contrib[2,1]/100))+(tsf[,3]*(pc1$var$contrib[3,1]/100)+(tsf[,4]*(pc1$var$contrib[4,1]/100)))
 head(findex)
 ts.plot(findex, col=2, lwd=3)
+#tsf[,1] * (pc1$var$contrib[1,1]/100)) +
 ```
 # Estimacion del Modelo con el Indice financiero
 usar findex, GDPMX, GDPUS, 
 ```{r}
-f<-cbind(GDPMX$GDPMX, findex, GDPUS$GDPUS)
+f<-cbind(GDPMX$GDPMX, findex, GCF$GCF, GDPUS$GDPUS)
 head(f)
-f<-ts(f, names=c("GDPMX", "findex", "GDPUS"), start= min(PCDM$yr), end=max(PCDM$yr), frequency=1)
-ts.plot(scale(f), col=c(1,2,3,4), lwd=c(2,2,2,5))
-legend("top", colnames(f), col = c(1:4), lty = 1)
-head(f)
+f<-ts(f, names=c("GDPMX", "findex", "GCF", "GDPUS"), start= min(PCDM$yr), end=max(PCDM$yr), frequency=1)
+ts.plot(scale(f), col=c(1,2,3,4), lwd=c(2,5,2,2))
+legend("bottomright", colnames(f), col = c(1:4), lty = 1)
 #f<-cbind(GDPMX$GDPMX, findex,GDPUS$GDPUS)
 #f<-ts(f,start= min(PCDM$yr), end=max(PCDM$yr), frequency=1)
 #ts.plot(scale(f), col=c(1,2,3), lwd=c(2,2,2))
@@ -183,29 +203,28 @@ adf_matm
 # Estimar 
 La estimación sera con US GDP como variable de control
 ```{r}
-p <- VARselect(f,lag.max=12, type = "const")$selection["HQ(n)"]
+p <- VARselect(f,lag.max=7, type = "const")$selection["AIC(n)"]
 p
+#pero escogeremos 6 por periodo sexenal
+p <- 6 
 # estimamos el VAR
 varf <- VAR(f, p = p, type = "const")
-summary(varf)
 roots(varf)
 ```
 # Estimacion de los residuales.
 Los residuales son I(0) por lo tanto, podemos confirmar que las series están cointegradas.
 Indice no significativo.
 ```{r}
-regref<-lm(f[,"GDPMX"]~f[,"findex"]+f[,"GDPUS"])
-summary(regref)
+regref<-lm(f[,"GDPMX"]~f[,"findex"]+f[,"GCF"]+ f[,"GDPUS"])
+coeftest(regref)
 ts.plot(regref$residuals)
 adf(resid(regref))
-
 ```
 # Pruebas de diagnóstico
 No tenemos problmeas de ARCH
 Tampoco tenemos problemas de Autocorrelación Serial
 Hay normalidad en los residuos del modelo.
 ```{r}
-normality.test(varf)
 arch.test(varf)
 serial.test(varf)
 ```
@@ -220,17 +239,6 @@ for (i in 1 : ncol(f)) {
 }
 causalidad
 ```
-# Funcion impulso respuesa
-Las graficas no convergen a 0
-```{r}
-#PLOT de respuesta impulso
-opp <- par(mfrow = c(1,1))
-for(i in 1 : 2){
-  plot(irf(varf, impulse = colnames(f)[i+1], response = "GDPMX"),
-    main = colnames(f)[i+1])
-}
-par(opp)
-```
 # VEC
 Como vemos que la raíz unitaria es muy cercano a 1, vamos a implementar el procedimiento de Johansen para encontrar VEC.
 Las series no cointegran. 
@@ -238,5 +246,42 @@ Las series no cointegran.
 johaf <- ca.jo(f, type="eigen", ecdet = "const", K = p)
 summary(johaf)
 ```
+# Relaciones de Cointegración.
+
+```{r}
+RC <- cbind(f, 1)%*%johaf@V
+plot(RC[,1], type="l")
+
+```
+# Prueba de estacionariedad a la relación de cointegración
+```{r}
+adf(RC[,1])
+```
+# Estimación VEC por OLS
+Veremos si el término de corrección de error en el VEC resulta significativo.
+
+ect1 debe ser negativo y significativo.
+```{r}
+vecols<- cajorls(johaf,r=1)
+summary(vecols$rlm)
+```
+# Interpretación del Vector de Cointegracion
+La relación es positiva, 
+```{r}
+coefB(vecols)
+```
+# VEC to Var
+```{r}
+varf2<- vec2var(johaf,r=1)
+plot(irf(varf2, impulse = c("findex","GCF","GDPUS"), 
+         response = "GDPMX", n.ahead=20))
+```
 
 
+# Funcion impulso respuesa
+Las graficas no convergen a 0
+```{r}
+arch.test(varf2)
+
+serial.test(varf2)
+```

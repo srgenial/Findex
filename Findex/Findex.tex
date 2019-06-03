@@ -1,0 +1,460 @@
+% AER-Article.tex for AEA last revised 22 June 2011
+\documentclass[]{AEA}
+
+% The mathtime package uses a Times font instead of Computer Modern.
+% Uncomment the line below if you wish to use the mathtime package:
+%\usepackage[cmbold]{mathtime}
+% Note that miktex, by default, configures the mathtime package to use commercial fonts
+% which you may not have. If you would like to use mathtime but you are seeing error
+% messages about missing fonts (mtex.pfb, mtsy.pfb, or rmtmi.pfb) then please see
+% the technical support document at http://www.aeaweb.org/templates/technical_support.pdf
+% for instructions on fixing this problem.
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+
+% Uncomment the next line to use the natbib package with bibtex
+\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Desarrollo Financiero y Crecmimiento Económico en México}
+
+% \author{Author1 and Author2\thanks{Surname1: affiliation1, address1, email1.
+% Surname2: affiliation2, address2, email2. Acknowledgements}}
+
+
+\author{
+  Mauricio Montiel, Tiare León\\
+  Juan González, Juan Castro\thanks{
+  Montiel, León: El Colegio de la Frontera Norte, \href{mailto:mmontiel.MEA2018@colef.mx, tiare.mea2018@colef.mx}{mmontiel.MEA2018@colef.mx, tiare.mea2018@colef.mx}.
+  González, Castro: , \href{mailto:juangonzalez@colef.mx, jclimon.mea2018@colef.mx}{juangonzalez@colef.mx, jclimon.mea2018@colef.mx}.
+}
+}
+
+\date{\today}
+\pubMonth{06}
+\pubYear{2019}
+\pubVolume{}
+\pubIssue{}
+\JEL{O16, O47, C22}
+\Keywords{Desarrollo Financiero, Crecimiento Económico, Series de tiempo}
+
+\begin{abstract}
+La hipótesis de McKinon-Shaw nos dice que las restricciones
+gubernamentales sobre el sector financiero restringen y distorsionan el
+proceso de desarrollo de este sector y, por ende, inhiben el proceso de
+crecimiento económico. En este contexto, un sistema financiero
+desregulado tiene efectos positivos en el crecimiento económico de largo
+plazo. Por su parte, el sistema financiero mexicano ha pasado por dos
+grandes etapas: de regulación hasta 1988 y posteriormente de
+liberalización. El objetivo general de este trabajo es conitribuir a la
+litaratura empírica al examinar los efectos de la intermediación
+financiera en México de 1968 a 2018, lapso de 50 años en el que se han
+llevado a cabo reformas importantes en el sector financiero tendientes a
+liberalizarlo.
+\end{abstract}
+
+
+\maketitle
+
+\section{Introducción}
+
+La creciente competencia en el sector financiero por una mayor
+rentabilidad y menor riesgo impulsa la expansión de los flujos
+internacionales de capital procedentes de grandes bancos, empresas
+trasnacionales y nuevos inversionistas institucionales que agrupan a un
+gran numero de ahorradores de los países industrializados. Esto generó,
+en los años setenta, los procesos de liberalización financiera (Tabares
+and Daza 2000).
+
+Esta liberalización se puede caracterizar como el proceso de otorgar al
+mercado la autoridad para determinar quien obtiene y otorga el crédito y
+a qué precio. Esta caracterización sugiere seis dimensiones para la
+liberalización (Williamson and Mahar 1998): la eliminación de los
+controles de crédito, la desregulación de los tipos de interés, la
+entrada libre a la industria de servicios financieros, autonomía
+bancaria, propiedad privada de los bancos y la liberación de los flujos
+internacionales de capital.
+
+Existen dos puntos de vista muy diferentes acerca de los efectos que
+tiene la liberalización financiera. Desde un punto de vista, esta
+fortalece el desarrollo financiero y contribuye al crecimiento económico
+de largo plazo. Desde otro punto de vista, la liberalización financiera
+provoca una toma excesiva de riesgos, aumenta la volatilidad
+macroeconómica y conduce a crisis más frecuentes; sin embargo, aunque
+esta liberalización conduce a crisis ocasionalmente, también promueve un
+crecimiento económico promedio más rápido a largo plazo y, aunque estas
+crisis sean costosas y tengan efectos recesivos, son eventos raros. Por
+lo tanto, a largo plazo, los efectos positivos de la liberalización
+financiera superan con creces los efectos perjudiciales de las crisis
+(Ranciere, Tornell, and Westermann 2006).
+
+Actualmente existe abundante evidencia de que el desarrollo financiero
+derivado de la liberalización tiene un impacto positivo sobre el
+crecimiento económico. Por un lado, la literatura empírica sugiere que
+economías con un mejor funcionamiento del sector financiero obtienen un
+mayor crecimiento económico.
+
+Por otro lado, la literatura teórica ha identificado los mecanismos a
+través de los cuales el desarrollo del sector financiero afecta a los
+determinantes del crecimiento económico. En concreto, el sistema
+financiero afecta positivamente al generar información sobre posibles
+inversiones y asignar los recursos a las más eficientes, monitorear
+proyectos de inversión y mejorar el gobierno corporativo, diversificar y
+facilitar el manejo del riesgo, movilizar y reunir ahorros de distintos
+individuos y facilitar el intercambio de bienes y servicios. Es
+importante resaltar que el sistema financiero también incentiva la
+acumulación de capital físico y humano, la innovación tecnológica y el
+flujo internacional de capitales \textbf{{[}cermeno2016desarrollo{]}}
+
+Cabe destacar que este flujo internacional de capitales existía incluso
+antes de que se diera el proceso de liberalización financiera; la
+diferencia radica en que antes los gobiernos frenaban el acceso a nuevos
+agentes en el sector financiero. En México; sin embargo, incluso después
+de la liberalización financiera, el ingreso neto de capitales
+internacionales no se ha reflejado en un mayor crecimiento económico,
+pues este se ha mantenido prácticamente estancado (Tabares and Daza
+2000).
+
+El objetivo general de este trabajo es conitribuir a la litaratura
+empírica al examinar los efectos de la intermediación financiera en
+México de 1968 a 2018, lapso de 50 años en el que se han llevado a cabo
+reformas importantes en el sector financiero tendientes a liberalizarlo.
+Verificar que si el desarrollo financiero se estanca entonces el
+crecimiento económico será menor que el esperado. Además se busca
+examinar, a través de la creación de un índice, si la regulación
+financiera inhibió el desarrollo de las instituciones intermediarias y
+entender su comportamiento antes y después de la liberalización
+financiera.
+
+La revisión de estos efectos a largo plazo y la creación de el índice se
+elaborarán con base en las metodologías de series de tiempo. En primer
+lugar se determinará el orden de integración de las series utilizando la
+pruabde Dickey-Fuller aumentada; en seguida se procederá a identificar
+las relaciones de largo plazo entre las variables con base en la
+metodología de Johansen (1988). Se realizarán pruebas de causalidad y
+para medir el desarrollo financiero se construirá un índice utilizando
+la metodología de componentes principales.
+
+Esta investigación se realizará para México en un periodo de 50 años que
+abarcará desde 1968 hasta 2018. El documento presenta la siguinte
+estructura. En la pimera sección se discutirá la teoría y la evidencia
+empírica que sustentan la relación entre desarrollo financiero y
+crecimiento económico. En la segunda sección se revisará el desarrollo
+histórico y el estado actual del sistema financiero en nuestro país y en
+la tercera sección sedescribirá el modelo empírico a utilizar y se
+desarrollará la metodología econométrica. Por último, habrá una sección
+en donde se expongan las conclusiones y se resalten los principales
+hallazgos de la investigación. En esta sección se discutirá si las
+variables fueron adecuadas para explicar la problemática y se expondrá
+el cumplimiento de las respectivas hipótesis.
+
+\section{Revisión teórica y empírica}
+
+De acuerdo a la teoría, la principal función de los intermediarios
+financieros es canalizar de manera apropiada el ahorro de los
+consumidores hacia el gobierno y los empresarios que piden prestamos.
+
+En este sentido, el sistema bancario debe aminorar las asimetrías de la
+información entre los prestatarios y los prestamistas, así como asegurar
+que los fondos se vayan a actividades productivas que aseguren la
+eficiencia económica y con ella el crecimiento. Los modelos de
+crecimiento económico neoclásicos indican que la condición para el
+crecimiento a largo plazo es el crecimiento de la fuerza laboral y el
+progreso técnico (Solow, 1956). En este sentido, desde el punto de vista
+neoclásico, la intermediación financiera solo influiría en el
+crecimiento a través de la canalización del ahorro hacia ese progreso
+técnico.
+
+En la teoría de crecimiento endógeno la intermediación financiera
+influye en el crecimiento a través de la inversión en Investigación y
+Desarrollo (Romer 1986). Por lo tanto, el punto principal es que en
+última instancia la intermediación financiera aumentará el ahorro que
+será utilizado para invertir y aunque algunas de estas teorías
+desarrollen modelos analíticos para entender la relación entre el
+desarrollo financiero y el crecimiento económico solamente han sido
+anecdóticas (Fase and Abma 2003) y las pruebas empíricas de esa relación
+son un campo de estudio aparte. Por lo tanto, esta investigación estará
+enfocada en el diseño estadístico para la validación empírica para el
+caso de México.
+
+Con respecto a esta validación empírica existen trabajos como el de
+Goldsmith (1969) en el cual analizó el desarrollo financiero. Utilizó
+datos anuales de 35 países más o menos homogéneos y logró documentar el
+desarrollo de intermediarios financieros para explicar el crecimiento.
+Sus resultados apoyan la opinión de que el crecimiento económico y el
+nivel de desarrollo financiero están correlacionados. Encontró esta
+correlación positiva entre el desarrollo financiero y económico para un
+gran número de países.
+
+Por otro lado, existen trabajos como el de King and Levine (1993) que en
+el contexto de los modelos endógenos estudiaron 77 países durante el
+período 1960--1989 para ver la relación entre el desarrollo financiero y
+el crecimiento económico. Ellos tuvieron en cuenta otros factores que
+pueden influir en el crecimiento económico además de la estructura
+financiera. Sus resultados muestran una relación fuerte y positiva y
+descubrieron que el desarrollo financiero es un buen indicador del
+crecimiento de largo plazo. King y Levine también hicieron un análisis
+causal entre el desarrollo financiero y el crecimiento económico. Sus
+resultados sugieren que inicialmente, el nivel de desarrollo financiero
+predice el crecimiento económico.
+
+\section{Reformas financieras en México}
+
+Partiendo de la hipótesis de que las restricciones gubernamentales sobre
+el sistema financiero restringen y distorsionan el proceso de desarrollo
+financiero y, en consecuencia, reducen el crecimiento de la economía
+\textbf{{[}rodriguez2009desarrollo{]}}, es posible analizar estos
+efectos sobre la economía Méxicana.
+
+México alcanzó altas tasas de crecimiento económico con inflación baja
+durante los años sesenta, pero a mediados de la década siguiente la
+inestabilidad internacional en el mercado petrolero originó la
+devaluación de la moneda, la fuga de capitales y finalmente la crisis de
+la deuda de 1982, agravada por las dificultades para el acceso al
+crédito internacional lo que a su vez dificultó el proceso de desarrollo
+financiero.
+
+Debido a que el Estado era el principal impulsor de la economía, su
+gasto creció hasta entrar en déficit y tuvo que recurrir al
+endeudamiento externo debido a que el financiamiento interno se
+encontraba reprimido. Esta represión se manifestaba a través la
+regulación de las tasas de interés, la existencia de controles
+cuantitativos del crédito, el uso de reservas obligatorias por parte de
+la banca comercial para el otorgamiento de crédito al gobierno, etc.
+
+En el sexenio del presidente Carlos Salinas (1989-1994), se argumentaba
+que la reforma financiera era necesaria ya que se había desarrollado un
+marco institucional incapaz de responder a los choques externos. En
+consecuencia, el gobierno transfirió a la iniciativa privada la tarea de
+impulsar la economía, incluyendo el financiamiento para las actividades
+productivas mediante el nuevo marco regulatorio de liberalización y
+apertura del sistema financiero. Lo que se esperaba era promover el
+crecimiento económico a través del desarrollo financiero.
+
+El inicio de la década de 1990 se caracterizó fundamentalmente por el
+proceso de liberalización del sistema financiero mexicano; sin embargo,
+a principios de esa década, existió una gran cantidad de choques
+negativos externos e internos que culminaron en la crisis financiera y
+de balanza de pagos a finales de 1994. Una vez superada esta crisis, el
+gobierno comenzó a reestructurar el sistema bancario y a rescatar a los
+deudores de la banca y permitió la inversión extranjera en la banca
+comercial doméstica \textbf{{[}rodriguez2009desarrollo{]}}.
+
+\section{Análisis econométrico}
+
+Para analizar empíricamente el efecto que tiene el desarrollo financiero
+sobre el crecimiento económico de México se propone la siguiente función
+que incluye variables económicas fundamentales de caracter estructural
+como el PIB per cápitam denotado por \(Y_{t}\), el Índice de Formación
+Bruta de Capital Fijo denotado como FBCF y el Índice de Desarrollo
+Financiero denotado como FINDEX
+
+\begin{align}
+  \Delta \ln Y_{t}=\alpha FINDEX + \beta FBCF + \varepsilon _{t}
+\end{align}
+
+El símbolo \(\Delta\) es el operador de primera diferencia y \(\ln\)
+indica que los datos están en logarítmos. \(\varepsilon _{t}\) es un
+témino de residuales con media cero y varianza constante. De acuerdo
+esta ecuación se espera que que el coeficiente \(\alpha\) de la variable
+de desarrollo financiero sea positivo y significativo al igual que el
+coeficiente \(\beta\).
+
+Estas relaciones se estudian con base en la metodología de series de
+tiempo. Como primer paso se determinará el orden de integración de las
+series económicas con la prueba de Dikey-Fuller aumentada y en seguida
+se procederá a examinar la relación a largo plazo entre ellas.
+
+En análisis a largo plazo se analiza a partir del concepto de
+cointegración que Engel y Granger (1988) definieron de la siguiente
+manera: Un conjunto de variables económicas está cointegado si para un
+vecor de coeficientes
+\(\beta = \left (\beta_{1} , \beta _{2},...\beta _{n} \right )\)
+denominado vector de cointegración y un vector de variables
+\(Y_{t} = \left (Y_{1t} , Y _{2t},...Y_{nt} \right )\) existe una
+relación tal que:
+
+\begin{align}
+  \beta Y_{t}=\varepsilon_{t}
+\end{align}
+
+donde \(\varepsilon_{t}\) tiene que ser un proceso estacionario. El
+requisito para esta cointegración es que las variables del vector
+\(Y_{y}\) deben ser del mismo orden de integración y que su combinación
+lineal sea de un orden de integración menor. El procedimiento estandar
+de cointegración es como sigue: a) se realizan pruebas de
+estacionareidad a todas las variables involucradas en el modelo para
+deteminar su orden de integración esperando que todos tengan el mismo y
+b) se estima la ecuación de cointegración para después analizar sus
+residuales y comprobar que sean estacionarios. Si los residuos son
+estacinarios podemos concluir que nuestras variables son cointegradas.
+
+Sin embargo, esta técnica no permite analizar mas de dos variables y es
+por esa razón que se opto por la metodología de Johansen (1988), la cual
+nos permite identificar si existe una relación a largo plazo entre dos o
+más variables.
+
+\hypertarget{descripcion-de-los-datos}{%
+\subsection{Descripción de los datos}\label{descripcion-de-los-datos}}
+
+En el estudio de King and Levine (1993) los autores utilizaron cuatro
+medidas para describir el nivel de desarrollo financiero. La primera
+medida es de los pasivos líquidos del sistema financiero. La segunda
+medida describe la importancia de los bancos para la asignación de
+crédito. La tercera y cuarta medida representan, de dos maneras
+diferentes, el monto de los préstamos a empresas privadas.
+
+Goldsmith (1969) por su parte, propone un indicador que consiste en la
+relación entre los activos de los intermediarios financieros y el
+Producto Nacional Bruto (PNB).
+
+Las variables que nos indica la teoría son el crédito bancario al sector
+privado con respecto al PIB, los activos bancarios comerciales con
+respecto a los activos totales, el M2 con respeto al PIB, los activos de
+la banca central con respecto a los activos totales y los pasivos
+líquidos con respecto al PIB (Levine 1997).
+
+En México, las variables que se pueden utilizar para analizar el
+desarrollo financiero son:
+
+\begin{itemize}
+\item Liquid liabilities to GDP %
+\item Private credit by deposit money banks and other financial institutions to GDP %
+\item Domestic credit provided by financial sector % of GDP
+\item Domestic credit to private sector % of GDP
+\item Masa Monetaria con respecto al PIB
+\end{itemize}
+
+Estas variables se obtuvieron de los \emph{World Development Indicators}
+del Banco Mundial. \textbf{HAY QUE TRADUCIRLAS CORRECTAMENTE}
+
+Ang and McKibbin (2007) indican que muchas variables financieras están
+altamente correlacionadas; sin embargo, separadas no servirían para
+explicar el grado de desarrollo financiero. Una opición es la
+construcción de un índice mediante la técnica de componentes
+principales, que consiste en obtener una serie de datos que proviene de
+un conjunto de variabls correlacionadas a través de la obtención de
+valores propios con los cuales puede hacer un promedio ponderado y
+obtener dicha serie.
+
+La tabla 1 contiene los resultados del análisis de componentes
+principales en donde se puede observar que el primer componente explica
+el 59.46\% de la varianza de los datos. Para construir el índice
+extraemos las contribuciones individuales de las variables LLG
+(24.84\%),PCDM (25.16\%), DCFS (2.63\%), DCPS (25.27\%), M2 (23.07\%)
+del vector 1 las cuales se utilzan para construir una serie ponderada
+que se mestra en la figura XX.
+
+\begin{table}
+
+\caption{Análisis deComponentes Principales}
+
+\begin{tabular}{llllll}
+& CP1 & CP2 & CP3 & CP4 & CP5 \\
+Eigenvalor & 2.97 & 1.25 & 0.61 & 0.13 & 0.02 \\
+Porcentaje de varianza & 59.46 & 25.06 & 12.30 & 2.74 & 0.42 \\
+Porcentaje acumulado & 59.46 & 84.52 & 96.83 & 99.57 & 100 \\
+*Variable* & Vector 1 & Vector 2 & Vector 3 & Vector 4 & Vector 5 \\
+LLG & 23.84 & 0.21 & 42.36 & 17.68 & 15.88 \\
+PCDM & 25.16 & 4 & 5 & 4 & 5 \\
+DCFS & 2.63 & 4 & 5 & 4 & 5 \\
+DCPS & 25.27 & 4 & 5 & 4 & 5 \\
+M2 & 23.07 & 4 & 5 & 4 & 5
+\end{tabular}
+
+\begin{tablenotes} [Nota]
+es mucho trabajo hacer esta tabla, la dejaré para después.
+\end{tablenotes}
+
+\begin{tablenotes}[Fuente]
+elaboración propia.
+\end{tablenotes}
+
+\end{table}
+
+\begin{figure}
+Figure XX.
+\caption{Caption for figure below.}
+\begin{figurenotes}
+Figure notes without optional leadin.
+\end{figurenotes}
+\begin{figurenotes}[Source]
+Figure notes with optional leadin (Source, in this case).
+\end{figurenotes}
+\end{figure}
+
+\hypertarget{analisis-empirico}{%
+\subsection{Análisis Empírico}\label{analisis-empirico}}
+
+\textbf{AQUÍ VA TODO EL ANÁLISIS Y GRÁFICOS. YA TENGO LOS RESULTADOS EN
+UN R-NOTEBOOK}
+
+\bibliographystyle{apa}
+\bibliography{references}
+
+\section{Bibliografía}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-ang2007financial}{}%
+Ang, James B, and Warwick J McKibbin. 2007. ``Financial Liberalization,
+Financial Sector Development and Growth: Evidence from Malaysia.''
+\emph{Journal of Development Economics} 84 (1). Elsevier: 215--33.
+
+\leavevmode\hypertarget{ref-fase2003financial}{}%
+Fase, Martin MG, and RCN Abma. 2003. ``Financial Environment and
+Economic Growth in Selected Asian Countries.'' \emph{Journal of Asian
+Economics} 14 (1). Elsevier: 11--21.
+
+\leavevmode\hypertarget{ref-goldsmith1969financial}{}%
+Goldsmith, Raymond William. 1969. ``Financial Structure and
+Development.''
+
+\leavevmode\hypertarget{ref-johansen1988statistical}{}%
+Johansen, Søren. 1988. ``Statistical Analysis of Cointegration
+Vectors.'' \emph{Journal of Economic Dynamics and Control} 12 (2-3).
+Elsevier: 231--54.
+
+\leavevmode\hypertarget{ref-king1993finance}{}%
+King, Robert G, and Ross Levine. 1993. ``Finance and Growth: Schumpeter
+Might Be Right.'' \emph{The Quarterly Journal of Economics} 108 (3). MIT
+Press: 717--37.
+
+\leavevmode\hypertarget{ref-levine1997desarrollo}{}%
+Levine, Ross. 1997. ``Desarrollo Financiero Y Crecimiento Económico:
+Enfoques Y Temario.'' \emph{Journal of Economic Literature} 35:
+688--726.
+
+\leavevmode\hypertarget{ref-ranciere2006decomposing}{}%
+Ranciere, Romain, Aaron Tornell, and Frank Westermann. 2006.
+``Decomposing the Effects of Financial Liberalization: Crises Vs.
+Growth.'' \emph{Journal of Banking \& Finance} 30 (12). Elsevier:
+3331--48.
+
+\leavevmode\hypertarget{ref-romer1986increasing}{}%
+Romer, Paul M. 1986. ``Increasing Returns and Long-Run Growth.''
+\emph{Journal of Political Economy} 94 (5). The University of Chicago
+Press: 1002--37.
+
+\leavevmode\hypertarget{ref-tabares2000desregulacion}{}%
+Tabares, Ramón Sánchez, and Alfredo Sánchez Daza. 2000. ``Desregulación
+Y Apertura Del Sector Financiero Mexicano.'' \emph{Comercio Exterior} 50
+(8): 690.
+
+\leavevmode\hypertarget{ref-williamson1998survey}{}%
+Williamson, John, and Molly Mahar. 1998. \emph{A Survey of Financial
+Liberalization}. International Finance Section, Department of Economics,
+Princeton University.
+
+\end{document}
+
